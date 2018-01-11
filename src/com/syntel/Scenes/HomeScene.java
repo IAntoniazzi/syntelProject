@@ -16,6 +16,19 @@ public class HomeScene extends Scene {
     @Override
     public Scene transitionNext() {
 
+        switch (selectedChoice) {
+
+            case "Login":
+                return new LoginScene();
+
+            case "Register":
+                return new RegisterScene();
+
+            case "Logout":
+                SessionState.customer = null;
+                return new HomeScene();
+        }
+
         return new HomeScene();
     }
 
