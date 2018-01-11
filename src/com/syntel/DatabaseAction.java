@@ -17,6 +17,7 @@ public class DatabaseAction {
 
     public static boolean customerExists(String email){
         //returns true if customer already exists
+        return true;
     }
     
     public static Customer getCustomer(String email, String password) {
