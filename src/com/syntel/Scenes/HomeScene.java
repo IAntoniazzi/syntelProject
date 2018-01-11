@@ -8,9 +8,11 @@ import java.util.List;
 public class HomeScene extends Scene {
 
     private final boolean loggedIn;
+    private final boolean admin;
 
     public HomeScene() {
         loggedIn = SessionState.loggedIn();
+        admin = loggedIn ? SessionState.customer.isAdmin() : false;
     }
 
     @Override
@@ -31,6 +33,16 @@ public class HomeScene extends Scene {
             case "View available foods":
                 return new FoodScene();
 
+            case "View ongoing orders":
+                break;
+
+            // Implement scenes for these
+            case "Todays management":
+            case "User management":
+            case "Area management":
+            case "Package management":
+            case "Order management":
+                break;
         }
 
         return new HomeScene();
@@ -48,6 +60,14 @@ public class HomeScene extends Scene {
             choices.add("Logout");
             choices.add("View available foods");
             choices.add("View ongoing orders");
+        }
+
+        if (admin) {
+            choices.add("Todays management");
+            choices.add("User management");
+            choices.add("Area management");
+            choices.add("Package management");
+            choices.add("Order management");
         }
 
         do {
