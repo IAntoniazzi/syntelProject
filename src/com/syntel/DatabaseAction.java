@@ -15,16 +15,25 @@ public class DatabaseAction {
 
     private DatabaseAction() {}
 
+    public static boolean customerExists(String email){
+        //returns true if customer already exists
+    }
+    
     public static Customer getCustomer(String email, String password) {
+        if(customerExists(email){
         // attempt a login
+        }
         return new Customer();
     }
     
     public static boolean createCustomer(String email, String password) {
-        // this is where you would insert the customer into a table
-        // if they don't currently exist, returning the status of success
-        
-        return true;
+        if(!customerExists(email){
+            //insert customer into table
+        }
+        else{
+            //redirect to login
+        }
+        return true;  //on success
     }
 
     public static List<Order> getOrders(Customer customer) {
