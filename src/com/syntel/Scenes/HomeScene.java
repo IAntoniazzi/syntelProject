@@ -27,6 +27,10 @@ public class HomeScene extends Scene {
             case "Logout":
                 SessionState.customer = null;
                 return new HomeScene();
+
+            case "View available foods":
+                return new FoodScene();
+
         }
 
         return new HomeScene();
