@@ -1,6 +1,6 @@
 
 public class FoodItemController {
-    private FoodItemModel model;
+    private FoodItem model;
    private FoodItemView view;
 
    public FoodItemController(FoodItemModel model, FoodItemView view){
