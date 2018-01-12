@@ -79,5 +79,17 @@ public class DatabaseAction {
     public static List<Package> getTodaysSpecials() {
         return new ArrayList<>();
     }
+    
+    public static boolean createDeliverableArea( Address address )    {  
+        return true;    
+    }        
+    
+    public static List<Address> getDeliverableAreas()    {        
+        //stub for deliverable areas        
+        List<Address> toReturn = new ArrayList<Address>();        
+        toReturn.add( new Address() );        
+        toReturn.get( 0 ).setZip( "12345" );        
+        return toReturn;    
+    }
 
 }
