@@ -8,21 +8,15 @@ import com.syntel.DatabaseAction;
 public class UserManagementScene extends Scene {
 	
 	private String email;
-	private boolean delete = false;
-	private boolean ban = false;
-	private boolean unban = false;
-	private boolean changePwd = false;
-	
+		
 	
 	@Override
 	public Scene transitionNext() {
-		
-		System.out.println("Email entered: "+email);
-		
+				
 		switch(selectedChoice) {
 		
 			case "Delete User":
-				System.out.println("Deleteing user!");
+				System.out.println("Deleted user!");
 				break;
 				
 			case "Ban User":
@@ -36,12 +30,11 @@ public class UserManagementScene extends Scene {
 			case "Change User Password":
 				System.out.println("Changing pwd!");
 				break;
+				
 			case "Back":
-				return new HomeScene();
+				return new HomeScene();			
 				
-				
-		}
-		
+		}		
 				
 		return new UserManagementScene();
 		
@@ -70,8 +63,7 @@ public class UserManagementScene extends Scene {
 		if(!selectedChoice.equals("Back")){
 			System.out.print("Enter User Email Address: ");				
 			email = scanner.nextLine();	
-		}
-		
+		}		
 		
 		requestTransition = true;
 		
