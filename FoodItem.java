@@ -1,5 +1,5 @@
 
-public class FoodItemModel {
+public class FoodItem {
     private int FoodItemId;
     private String Name;
     private String Description;
