@@ -1,13 +1,19 @@
 
 public class Address {
     private int AddressId;
-    private String Street1;
-    private String Street2;
+    private String Street;
     private String City;
     private String State;
     private String Zip;
-    private boolean IsDeliverable;
 
+    public Address(int addressId, String street, String city, String state, String zip){
+        this.AddressId = addressId;
+        this.Street = street;
+        this.City = city;
+        this.State = state;
+        this.Zip = zip;
+    }
+    
     public int getAddressId() {
         return AddressId;
     }
@@ -16,20 +22,12 @@ public class Address {
         this.AddressId = AddressId;
     }
 
-    public String getStreet1() {
-        return Street1;
+    public String getStreet() {
+        return Street;
     }
 
-    public void setStreet1(String Street1) {
-        this.Street1 = Street1;
-    }
-
-    public String getStreet2() {
-        return Street2;
-    }
-
-    public void setStreet2(String Street2) {
-        this.Street2 = Street2;
+    public void setStreet(String Street) {
+        this.Street = Street;
     }
 
     public String getCity() {
@@ -56,12 +54,5 @@ public class Address {
         this.Zip = Zip;
     }
 
-    public boolean isIsDeliverable() {
-        return IsDeliverable;
-    }
-
-    public void setIsDeliverable(boolean IsDeliverable) {
-        this.IsDeliverable = IsDeliverable;
-    }
     
 }
