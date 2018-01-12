@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 
 public class OrdersController {
-     private OrdersModel model;
+     private Orders model;
    private OrdersView view;
 
    public OrdersController(OrdersModel model, OrdersView view){
