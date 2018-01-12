@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 
 
-public class OrdersModel {
+public class Orders {
      private int OrderId;
     private int UserId;
     private int AddressId;
