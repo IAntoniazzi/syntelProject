@@ -1,6 +1,6 @@
 public class OnlineUserController {
    
-   private OnlineUserModel model;
+   private OnlineUser model;
    private OnlineUserView view;
 
    public OnlineUserController(OnlineUserModel model, OnlineUserView view){
