@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.UserController;
 import java.util.Scanner;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class ManageUserView {
     
     public static void main(String [] args){
-        ManageUser manage = new ManageUser();
+        UserController userController = new UserController();
         Scanner input = new Scanner(System.in);
         
        /* System.out.println("Enter 1 to see menu");
@@ -23,17 +24,27 @@ public class ManageUserView {
             //View.showMenu();
          }*/
         
-        System.out.println("Enter 1 to enable user or 2 to disable user");       
-        int disableResponse = input.nextInt();
-        if(disableResponse == 1){
-            System.out.println("Enter User Email to disable");
+        System.out.println("Enter 1 to enable user");
+        System.out.println("Enter 2 to disable user");
+        System.out.println("Enter 3 to delete user");
+        
+        int response = input.nextInt();
+        if(response == 1){
+            System.out.println("Enter User Email to enable");
             String userEmail = input.next();
-            manage.enableUser(userEmail);
+            userController.updateModelEnableUser(userEmail);
         }
-        if(disableResponse == 2){
+        
+        if(response == 2){
             System.out.println("Enter User Email to disable");
             String userEmail = input.next();
-            manage.disableUser(userEmail);
+            userController.updateModelDisableUser(userEmail);
+        }
+        
+          if(response == 3){
+            System.out.println("Enter User Email to delete");
+            String userEmail = input.next();
+            userController.updateModelDeleteUser(userEmail);
         }
         
          //System.out.println("Enter 3 to delete password");

@@ -41,26 +41,26 @@ public class Connector {
         }
     }
 
-    public void disableQuery(String cmd) {
+    public void disableUserQuery(String cmd) {
         try {
             PreparedStatement pstmt = conn.prepareStatement("Update Online_user set status = 'Disabled' where email=?");
             pstmt.setString(1, cmd);
             int count = pstmt.executeUpdate();
             if (count == 1) {
-                System.out.println("User " + cmd + " has been disabled!");
+                System.out.println("User" + cmd + ": status changed to disabled!");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void enableQuery(String cmd) {
+    public void enableUserQuery(String cmd) {
         try {
             PreparedStatement pstmt = conn.prepareStatement("Update Online_user set status = 'Enabled' where email=?");
             pstmt.setString(1, cmd);
             int count = pstmt.executeUpdate();
             if (count == 1) {
-                System.out.println("User " + cmd + " has been disabled!");
+                System.out.println("User" + cmd + ": status changed to enabled!");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,6 +88,19 @@ public class Connector {
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mealsList;
+    }
+    
+    public void deleteUserQuery(String cmd){
+                try {
+            PreparedStatement pstmt = conn.prepareStatement("Delete from Online_user where email=?");
+            pstmt.setString(1, cmd);
+            int count = pstmt.executeUpdate();
+            if (count == 1) {
+                System.out.println("User " + cmd + " has been deleted!");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

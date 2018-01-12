@@ -16,12 +16,6 @@ public class MealOptionsView {
         Menu showMenu = new Menu();
         Scanner input = new Scanner(System.in);
         
-       /* System.out.println("Enter 1 to see menu");
-        int menuResponse =  input.nextInt();
-         if(menuResponse == 1){
-            //View.showMenu();
-         }*/
-        
         System.out.println("Enter 1 to see menu");
         int menuResponse =  input.nextInt();
         if(menuResponse == 1){   
