@@ -1,5 +1,5 @@
 
-public class AddressModel {
+public class Address {
     private int AddressId;
     private String Street1;
     private String Street2;
