@@ -3,7 +3,7 @@ public class AddressController {
    private Address model;
    private AddressView view;
 
-   public AddressController(AddressModel model, AddressView view){
+   public AddressController(Address model, AddressView view){
       this.model = model;
       this.view = view;
    }
