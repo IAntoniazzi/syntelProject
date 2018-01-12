@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.syntel.Scenes;
 
 import static com.syntel.Scenes.Scene.matchInputWithChoice;
@@ -29,6 +24,8 @@ public class OrderManageScene extends Scene
         choices.add( "Mode of payment" );
         choices.add( "Date" );
         choices.add( "Area" );
+        choices.add( "Price" );
+        choices.add( "OrderID" );
         choices.add( "Back" );
         
         do {
@@ -41,6 +38,7 @@ public class OrderManageScene extends Scene
 
         } while (selectedChoice == null);
         
+        //TODO: customer name,customer email
         switch ( selectedChoice )
         {
             case "Mode of payment":
@@ -55,8 +53,8 @@ public class OrderManageScene extends Scene
             case "Area":
                 displayOrdersByArea();
                 break;
-            case "User":
-                displayOrdersByColumn( "user_id" , "user id" );
+            case "OrderID":
+                displayOrdersByColumn( "order_id" , "order id" );
                 break;
             case "Back":
                 requestTransition = true;
