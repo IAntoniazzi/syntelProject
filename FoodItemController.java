@@ -3,7 +3,7 @@ public class FoodItemController {
     private FoodItem model;
    private FoodItemView view;
 
-   public FoodItemController(FoodItemModel model, FoodItemView view){
+   public FoodItemController(FoodItem model, FoodItemView view){
       this.model = model;
       this.view = view;
    }
@@ -64,6 +64,14 @@ public class FoodItemController {
     
     public String getImage() {
         return model.getImage();
+    }
+    
+    public void setAvailability(int Availability){      
+        model.setAvailability(Availability);     
+    }
+    
+    public int getAvailability(){      
+        return model.getAvailability();     
     }
  
 }
