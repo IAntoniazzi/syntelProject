@@ -1,5 +1,5 @@
 
-public class OnlineUserModel {
+public class OnlineUser {
     private int UserId;
     private String FirstName;
     private String LastName;
