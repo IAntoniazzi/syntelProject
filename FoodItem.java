@@ -7,7 +7,19 @@ public class FoodItem {
     private String Type;
     private boolean IsVeg;
     private String Image;
+    private int Availability
 
+    public FoodItem(int id, string name, string description, float price, string type, boolean veg; string image, int availability){
+        this.FoodItemId = id;
+        this.Name = name;
+        this.Description = description;
+        this.Price = price;
+        this.Type = type;
+        this.IsVeg = veg;
+        this.Image = image;
+        this.Availability = availability;
+    }
+    
     public int getFoodItemId() {
         return FoodItemId;
     }
@@ -62,6 +74,14 @@ public class FoodItem {
 
     public void setImage(String Image) {
         this.Image = Image;
+    }
+    
+    public int getAvailability(){
+        return Availability;
+    }
+    
+    public void setAvailability(int Availability){
+        this.Availability = Availability;
     }
     
 }
