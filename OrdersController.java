@@ -75,22 +75,5 @@ public class OrdersController {
     public void removeItem(int ItemId){
         model.removeItem(ItemId);
     }
- 
-
-    public void setIsAdmin(boolean IsAdmin) {
-        model.setIsAdmin(IsAdmin);
-    }
-
-    public boolean getIsAdmin() {
-        return model.getIsAdmin();
-    }
-    
-    public void setIsBanned(boolean IsBanned) {
-        model.setIsBanned(IsBanned);
-    }
-
-    public boolean getIsBanned() {
-        return model.getIsBanned();
-    }
- 
+  
 }
