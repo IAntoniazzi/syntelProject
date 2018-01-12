@@ -1,6 +1,6 @@
 
 public class AddressController {
-   private AddressModel model;
+   private Address model;
    private AddressView view;
 
    public AddressController(AddressModel model, AddressView view){
