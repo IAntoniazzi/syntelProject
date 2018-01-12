@@ -7,10 +7,23 @@ public class Orders {
     private int UserId;
     private int AddressId;
     private String PaymentMethod;
-    private String Date;
+    private String OrderDate;
+    private String DeliveryDate;
     private String Time;
     private float Price;
-    private ArrayList<Integer> Items;  //array of FoodItemIds
+    private ArrayList<FoodItems> Items; 
+     
+    public Orders(int orderId, int userId, int addressId, String payment, String oDate, float price, String dDate, String dTime){
+         this.OrderId = orderId;
+         this.UserId = userId;
+         this.AddressId = addressId;
+         this.PaymentMethod = payment;
+         this.OrderDate = oDate;
+         this.DeliveryDate = dDate;
+         this.Time = dTime;
+         this.Price = price;
+    }
+     
     
     public int getOrderId() {
         return OrderId;
@@ -44,12 +57,20 @@ public class Orders {
         this.PaymentMethod = PaymentMethod;
     }
     
-    public String getDate() {
-        return Date;
+    public String getOrderDate() {
+        return OrderDate;
     }
-
-    public void setDate(String Date) {
-        this.Date = Date;
+     
+    public String getDeliveryDate() {
+         return DeliveryDate;    
+    }
+    
+    public void setDeliveryDate(String DeliveryDate) {
+         this.DeliveryDate = DeliveryDate;    
+    }
+    
+     public void setOrderDate(String DeliveryDate) {
+        this.DeliveryDate = DeliveryDate;
     }
 
     public String getTime() {
@@ -68,20 +89,20 @@ public class Orders {
         this.Price = Price;
     }
 
-    public ArrayList<Integer> getItems() {
+    public ArrayList<FoodItem> getItems() {
         return Items;
     }
 
-    public void setItems(ArrayList<Integer> Items) {
+    public void setItems(ArrayList<FoodItem> Items) {
         this.Items = Items;
     }
     
-    public void addItem(int ItemId){
-        this.setItems(this.getItems().add(ItemId));
+    public void addItem(FoodItem Item){
+        this.setItems(this.getItems().add(Item));
     }
     
-    public void removeItem(int ItemId){
-        this.setItems(this.getItems().remove(ItemId)); 
+    public void removeItem(FoodItem Item){
+        this.setItems(this.getItems().remove(Item)); 
     }
 
 
