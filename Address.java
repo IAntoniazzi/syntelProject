@@ -6,7 +6,7 @@ public class Address {
     private String State;
     private String Zip;
 
-    public Address(int addressId, String street, String city, String state, String zip){
+    public Address(int addressId, String street, String city, String zip, String state){
         this.AddressId = addressId;
         this.Street = street;
         this.City = city;
