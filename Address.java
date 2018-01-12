@@ -1,77 +1,58 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package restaurant;
 
-/**
- *
- * @author syntel
- */
 public class Address {
-    private static int AddressId;
-    private static String Street1;
-    private static String Street2;
-    private static String City;
-    private static String State;
-    private static String Zip;
-    private static boolean IsDeliverable;
+    private int AddressId;
+    private String Street;
+    private String City;
+    private String State;
+    private String Zip;
 
-    public static int getAddressId() {
+    public Address(int addressId, String street, String city, String zip, String state){
+        this.AddressId = addressId;
+        this.Street = street;
+        this.City = city;
+        this.State = state;
+        this.Zip = zip;
+    }
+    
+    public int getAddressId() {
         return AddressId;
     }
 
-    public static void setAddressId(int AddressId) {
-        Address.AddressId = AddressId;
+    public void setAddressId(int AddressId) {
+        this.AddressId = AddressId;
     }
 
-    public static String getStreet1() {
-        return Street1;
+    public String getStreet() {
+        return Street;
     }
 
-    public static void setStreet1(String Street1) {
-        Address.Street1 = Street1;
+    public void setStreet(String Street) {
+        this.Street = Street;
     }
 
-    public static String getStreet2() {
-        return Street2;
-    }
-
-    public static void setStreet2(String Street2) {
-        Address.Street2 = Street2;
-    }
-
-    public static String getCity() {
+    public String getCity() {
         return City;
     }
 
-    public static void setCity(String City) {
-        Address.City = City;
+    public void setCity(String City) {
+        this.City = City;
     }
 
-    public static String getState() {
+    public String getState() {
         return State;
     }
 
-    public static void setState(String State) {
-        Address.State = State;
+    public void setState(String State) {
+        this.State = State;
     }
 
-    public static String getZip() {
+    public String getZip() {
         return Zip;
     }
 
-    public static void setZip(String Zip) {
-        Address.Zip = Zip;
+    public void setZip(String Zip) {
+        this.Zip = Zip;
     }
 
-    public static boolean isIsDeliverable() {
-        return IsDeliverable;
-    }
-
-    public static void setIsDeliverable(boolean IsDeliverable) {
-        Address.IsDeliverable = IsDeliverable;
-    }
     
 }

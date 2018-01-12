@@ -1,77 +1,89 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package restaurant;
 
-/**
- *
- * @author syntel
- */
 public class FoodItem {
-    private static int FoodItemId;
-    private static String Name;
-    private static String Description;
-    private static float Price;
-    private static String Type;
-    private static boolean IsVeg;
-    private static String Image;
+    private int FoodItemId;
+    private String Name;
+    private String Description;
+    private float Price;
+    private String Type;
+    private boolean IsVeg;
+    private String Image;
+    private int Availability
 
-    public static int getFoodItemId() {
+    public FoodItem(int id, string name, string description, float price, string type, boolean veg; string image, int availability){
+        this.FoodItemId = id;
+        this.Name = name;
+        this.Description = description;
+        this.Price = price;
+        this.Type = type;
+        this.IsVeg = veg;
+        this.Image = image;
+        this.Availability = availability;
+    }
+    
+    public int getFoodItemId() {
         return FoodItemId;
     }
 
-    public static void setFoodItemId(int FoodItemId) {
-        FoodItem.FoodItemId = FoodItemId;
+    public void setFoodItemId(int FoodItemId) {
+        this.FoodItemId = FoodItemId;
     }
 
-    public static String getName() {
+    public String getName() {
         return Name;
     }
 
-    public static void setName(String Name) {
-        FoodItem.Name = Name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public static String getDescription() {
+    public String getDescription() {
         return Description;
     }
 
-    public static void setDescription(String Description) {
-        FoodItem.Description = Description;
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
-    public static float getPrice() {
+    public float getPrice() {
         return Price;
     }
 
-    public static void setPrice(float Price) {
-        FoodItem.Price = Price;
+    public void setPrice(float Price) {
+        this.Price = Price;
     }
 
-    public static String getType() {
+    public String getType() {
         return Type;
     }
 
-    public static void setType(String Type) {
-        FoodItem.Type = Type;
+    public void setType(String Type) {
+        this.Type = Type;
     }
 
-    public static boolean isIsVeg() {
+    public boolean getIsVeg() {
         return IsVeg;
     }
 
-    public static void setIsVeg(boolean IsVeg) {
-        FoodItem.IsVeg = IsVeg;
+    public void setIsVeg(boolean IsVeg) {
+        this.IsVeg = IsVeg;
     }
 
-    public static String getImage() {
+    public String getImage() {
         return Image;
     }
 
-    public static void setImage(String Image) {
-        FoodItem.Image = Image;
+    public void setImage(String Image) {
+        this.Image = Image;
+    }
+    
+    public int getAvailability(){
+        return Availability;
+    }
+    
+    public void setAvailability(int Availability){
+        this.Availability = Availability;
     }
     
 }
+
+
