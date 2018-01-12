@@ -15,7 +15,7 @@ CREATE TABLE Food_item (
   type varchar2(8),
   is_veg varchar(3),
   image blob,
-  Availability_id Number
+  Availability_id raw(16)
 );
 
 CREATE TABLE Address (
@@ -28,8 +28,8 @@ CREATE TABLE Address (
 
 CREATE TABLE Orders(
   order_id raw(16) default sys_guid() Primary Key,
-  user_id Number,
-  address_id Number,
+  user_id raw(16),
+  address_id raw(16),
   payment_type varchar2(20),
   order_date Date default sysdate not null,
   price Number,
@@ -46,7 +46,7 @@ CREATE TABLE Online_user(
   is_admin varchar2(3),
   password varchar2(50) not null,
   email varchar(35) not null,
-  address_id Number,
+  address_id raw(16),
   status varchar2(10) not null
 );
 
@@ -56,8 +56,8 @@ CREATE TABLE Service_areas (
 );
 
 CREATE TABLE Order_Items (
-   order_id Number,
-   food_item_id Number,
+   order_id raw(16),
+   food_item_id raw(16),
    quantity Number(4),
    CONSTRAINT order_items_pk PRIMARY KEY (order_id, food_item_id)
 );
@@ -83,13 +83,13 @@ Insert into Availability (zip_code, time, begin_date, end_date) values (25301, C
 
 Insert into Availability (zip_code, time, begin_date, end_date) values (10001, Current_timestamp, sysdate, '22-MAR-18');
 
-Insert Into Address (address_id,street, city, zip_code, state) values (10,'125 Main rd.', 'Houston',40201,'TX');
+Insert Into Address (street, city, zip_code, state) values ('125 Main rd.', 'Houston',40201,'TX');
 
-Insert Into Address (address_id,street, city, zip_code, state) values (11,'34 Grand Ave.','New York',30201, 'NY');
+Insert Into Address (street, city, zip_code, state) values ('34 Grand Ave.','New York',30201, 'NY');
 
-Insert Into Address (address_id,street, city, zip_code, state) values (12,'1001 Walkers Ct.', 'Atlanta',25301,'GA');
+Insert Into Address (street, city, zip_code, state) values ('1001 Walkers Ct.', 'Atlanta',25301,'GA');
 
-Insert Into Address (address_id, street, city, zip_code, state) values (13,'N 50th St.','Miami', 10001,'FL');
+Insert Into Address (street, city, zip_code, state) values ('N 50th St.','Miami', 10001,'FL');
 
 Insert into Online_user(first_name,last_name,is_admin, password, email, address_id, status) values ('Jane', 'Broom', 'No', 'Bit2','JBroom@ymail.com',(Select Address_id from Address where state='TX') ,'Enabled');
 
