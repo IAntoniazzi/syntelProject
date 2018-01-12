@@ -50,15 +50,6 @@ CREATE TABLE Online_user(
   status varchar2(10) not null
 );
 
-Alter Table Order_Items ADD  CONSTRAINT Order_items_fk FOREIGN KEY (order_id) REFERENCES Orders (order_id);
-Alter Table Order_Items ADD  CONSTRAINT Food_item_fk FOREIGN KEY (food_item_id) REFERENCES Food_item (food_item_id);
-Alter Table Food_item ADD  CONSTRAINT Availability_fk FOREIGN KEY (availability_id) REFERENCES Availability (Availability_id);
-Alter Table Availability ADD  CONSTRAINT zip_code_fk FOREIGN KEY (zip_code) REFERENCES Service_areas (zip_code);
-Alter Table Orders ADD  CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES Online_User (user_id);
-Alter Table Orders ADD  CONSTRAINT order_address_id_fk FOREIGN KEY (address_id) REFERENCES Address (address_id);
-Alter Table Online_User ADD  CONSTRAINT user_address_id_fk FOREIGN KEY (address_id) REFERENCES Address (address_id);
-
-
 CREATE TABLE Service_areas (
     zip_code Number not null,
     CONSTRAINT zip_code_pk PRIMARY KEY (zip_code)
@@ -70,6 +61,14 @@ CREATE TABLE Order_Items (
    quantity Number(4),
    CONSTRAINT order_items_pk PRIMARY KEY (order_id, food_item_id)
 );
+
+Alter Table Order_Items ADD  CONSTRAINT Order_items_fk FOREIGN KEY (order_id) REFERENCES Orders (order_id);
+Alter Table Order_Items ADD  CONSTRAINT Food_item_fk FOREIGN KEY (food_item_id) REFERENCES Food_item (food_item_id);
+Alter Table Food_item ADD  CONSTRAINT Availability_fk FOREIGN KEY (availability_id) REFERENCES Availability (Availability_id);
+Alter Table Availability ADD  CONSTRAINT zip_code_fk FOREIGN KEY (zip_code) REFERENCES Service_areas (zip_code);
+Alter Table Orders ADD  CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES Online_User (user_id);
+Alter Table Orders ADD  CONSTRAINT order_address_id_fk FOREIGN KEY (address_id) REFERENCES Address (address_id);
+Alter Table Online_User ADD  CONSTRAINT user_address_id_fk FOREIGN KEY (address_id) REFERENCES Address (address_id);
 
 Insert into Service_areas values (40201);
 Insert into Service_areas values (30201);
