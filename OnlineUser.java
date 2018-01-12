@@ -10,6 +10,28 @@ public class OnlineUser {
     private boolean IsAdmin;
     private boolean IsBanned;
 
+    public OnlineUser(int id, String fname, String lname, String isAdmin, String pword, String email, int addressId, String status){
+        this.UserId = id;
+        this.FirstName = fname;
+        this.LastNAme = lname;
+        if(isAdmin.compareToIgnoreCase("yes")==0){
+            this.IsAdmin = true;
+        }
+        else{
+            this.IsAdmin = false;
+        }
+        this.Password = pword;
+        this.Email = email;
+        this.AddressId = addressId;
+        if(status.compareToIgnoreCase("Enabled") ==0){
+            this.IsBanned = false;
+        }
+        else{
+            this.IsBanned = true;
+        }
+    }
+        
+    
     public int getUserId() {
         return UserId;
     }
@@ -74,7 +96,7 @@ public class OnlineUser {
         this.IsAdmin = IsAdmin;
     }
 
-    public boolean isIsBanned() {
+    public boolean getIsBanned() {
         return IsBanned;
     }
 
