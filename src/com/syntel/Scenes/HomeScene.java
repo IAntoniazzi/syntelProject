@@ -32,7 +32,7 @@ public class HomeScene extends Scene {
 
             case "View available foods":
                 return new FoodScene();
-
+                
             case "View ongoing orders":
                 break;
 
@@ -61,7 +61,7 @@ public class HomeScene extends Scene {
             choices.add("View available foods");
             choices.add("View ongoing orders");
         }
-
+        
         if (admin) {
             choices.add("Todays management");
             choices.add("User management");
@@ -69,6 +69,7 @@ public class HomeScene extends Scene {
             choices.add("Package management");
             choices.add("Order management");
         }
+        choices.add("Quit");
 
         do {
             // Display all choices
@@ -79,7 +80,10 @@ public class HomeScene extends Scene {
             selectedChoice = matchInputWithChoice(scanner.nextLine(), choices);
 
         } while (selectedChoice == null);
-
-        requestTransition = true;
+        
+        if (selectedChoice.equals("Quit"))
+            System.exit(0);
+        else
+            requestTransition = true;
     }
 }

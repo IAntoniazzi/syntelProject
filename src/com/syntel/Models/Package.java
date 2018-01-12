@@ -1,3 +1,4 @@
 package com.syntel.Models;
 
-public class Package {}
+public class Package {
+}

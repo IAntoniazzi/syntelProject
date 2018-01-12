@@ -25,6 +25,8 @@ public class Customer {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+    
+    
 
     public String getEmail() {
         return email;
