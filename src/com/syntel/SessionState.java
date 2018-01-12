@@ -2,11 +2,12 @@ package com.syntel;
 
 import com.syntel.Models.Customer;
 import com.syntel.Models.FoodItem;
+import com.syntel.Models.Order;
 import java.util.List;
 
 /**
  * This would be the held sessions state, maybe represented by
- * headers/cookies sent to server
+ * cookies of a user logging in
  */
 public class SessionState {
 
@@ -18,6 +19,6 @@ public class SessionState {
 
     public static Customer customer = null;
     
-    public static List<FoodItem> addedItems = null;
+    public static Order ongoingOrder = null;
 
 }

@@ -15,6 +15,13 @@ public class DatabaseAction {
 
     private DatabaseAction() {}
 
+    public static boolean addOrder(Customer customer, Order order) {
+        // Add an order and all of its food items to the database, based
+        // on customer id, creating a new order id on insertion
+        
+        return true;
+    }
+
     public static boolean customerExists(String email){
         //returns true if customer already exists
         return true;

@@ -38,6 +38,12 @@ public class FoodScene extends Scene {
         switch (selectedChoice) {
             case "Go back home":
                 return new HomeScene();
+                
+            case "Order":
+                // Move items to session, go to next state
+                SessionState.ongoingOrder = new Order();
+                SessionState.ongoingOrder.setFood(addedItems);
+                return new OrderScene();
         }
 
         return this;
@@ -58,6 +64,7 @@ public class FoodScene extends Scene {
                 if (addedItems.size() > 0) {
                     choices.add("Remove");
                     choices.add("Show selection");
+                    choices.add("Order");
                 }
                 choices.add("Go back home");
 
@@ -92,6 +99,10 @@ public class FoodScene extends Scene {
                             for (FoodItem f : addedItems)
                                 System.out.println(f);
                             System.out.println();
+                            break;
+                            
+                        case "Order":
+                            requestTransition = true;
                             break;
                     }
                 }

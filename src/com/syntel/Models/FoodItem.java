@@ -2,8 +2,13 @@ package com.syntel.Models;
 
 public class FoodItem {
 
-    private String name;
+    public String name;
+    public double price;
+    public String description;
+    
+    
 
+        
     @Override
     public String toString() {
         return name;

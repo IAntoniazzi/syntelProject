@@ -2,13 +2,28 @@ package com.syntel.Models;
 
 public class Customer {
 
-    private String email;
+    String email;
+    String password;
+    String address;
+    String paymentInfo;
+    boolean banned;
+    boolean admin;
 
-    private String password;
+    public String getPaymentInfo() {
+        return paymentInfo;
+    }
 
-    private boolean banned;
+    public void setPaymentInfo(String paymentInfo) {
+        this.paymentInfo = paymentInfo;
+    }
 
-    private boolean admin;
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public boolean isBanned() {
         return banned;
