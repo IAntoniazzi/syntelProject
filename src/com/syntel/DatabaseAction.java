@@ -28,14 +28,14 @@ public class DatabaseAction {
     }
     
     public static Customer getCustomer(String email, String password) {
-        if(customerExists(email){
+        if(customerExists(email)){
         // attempt a login
         }
         return new Customer();
     }
     
     public static boolean createCustomer(String email, String password) {
-        if(!customerExists(email){
+        if(!customerExists(email)){
             //insert customer into table
         }
         else{
