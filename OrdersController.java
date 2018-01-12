@@ -36,13 +36,21 @@ public class OrdersController {
       return model.getPaymentMethod();		
    }
    
-   public void setDate(String Date){
-      model.setDate(Date);		
+   public void setOrderDate(String Date){
+      model.setOrderDate(Date);		
    }
 
-   public String getDate(){
-      return model.getDate();		
+   public String getOrderDate(){
+      return model.getOrderDate();		
    }
+     
+   public void setDeliveryDate(String Date){
+        model.setDeliveryDate(Date);     
+   }
+     
+   public String getDeliveryDate(){
+        return model.getDeliveryDate();
+   }   
    
    public void setTime(String Time) {
         model.setTime(Time);
@@ -60,20 +68,20 @@ public class OrdersController {
         return model.getPrice();
     }
     
-    public void setItems(ArrayList<Integer> Items) {
+    public void setItems(ArrayList<FoodItem> Items) {
         model.setItems(Items);
     }
     
-    public ArrayList<Integer> getItems() {
+    public ArrayList<FoodItem> getItems() {
         return model.getItems();
     }
 
-    public void addItem(int ItemId) {
-        model.addItem(ItemId);
+    public void addItem(FoodItem Item) {
+        model.addItem(Item);
     }
     
-    public void removeItem(int ItemId){
-        model.removeItem(ItemId);
+    public void removeItem(FoodItem Item){
+        model.removeItem(Item);
     }
   
 }
