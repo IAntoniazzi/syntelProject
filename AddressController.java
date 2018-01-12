@@ -16,25 +16,13 @@ public class AddressController {
       return model.getAddressId();		
    }
 
-   public void setStreet1(String Street1){
-      model.setStreet1(Street1);		
+   public void setStreet(String Street){
+      model.setStreet(Street);		
    }
 
-   public String getStreet1(){
-      return model.getStreet1();		
+   public String getStreet(){
+      return model.getStreet();		
    }
-   
-   public void setStreet2(String Street2) {
-        model.setStreet2(Street2);
-    }
-   
-   public String getStreet2() {
-        return model.getStreet2();
-    }
-
-    public  void setCity(String City) {
-        model.setCity(City);
-    }
     
     public  String getCity() {
         return model.getCity();
@@ -56,14 +44,6 @@ public class AddressController {
 
     public String getZip() {
         return model.getZip();
-    }
-
-    public void setIsDeliverable(boolean IsDeliverable) {
-        model.setIsDeliverable(IsDeliverable);
-    }
-    
-    public boolean IsDeliverable() {
-        return model.getIsDeliverable();
     }
 
 }
