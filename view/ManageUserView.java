@@ -5,42 +5,30 @@
  */
 package view;
 
-import java.util.Scanner;
+import controller.UserController;
 
 /**
  *
  * @author syntel
  */
 public class ManageUserView {
-    
-    public static void main(String [] args){
-        ManageUser manage = new ManageUser();
-        Scanner input = new Scanner(System.in);
-        
-       /* System.out.println("Enter 1 to see menu");
-        int menuResponse =  input.nextInt();
-         if(menuResponse == 1){
-            //View.showMenu();
-         }*/
-        
-        System.out.println("Enter 1 to enable user or 2 to disable user");       
-        int disableResponse = input.nextInt();
-        if(disableResponse == 1){
-            System.out.println("Enter User Email to disable");
-            String userEmail = input.next();
-            manage.enableUser(userEmail);
-        }
-        if(disableResponse == 2){
-            System.out.println("Enter User Email to disable");
-            String userEmail = input.next();
-            manage.disableUser(userEmail);
-        }
-        
-         //System.out.println("Enter 3 to delete password");
-        
-        input.close();
-    }
-    
 
-    
+    UserController userController = new UserController();
+
+    public void enableUser(String userEmail) {
+        userController.updateModelEnableUser(userEmail);
+    }
+
+    public void disableUser(String userEmail) {
+         userController.updateModelDisableUser(userEmail);
+    }
+
+    public void deleteUser(String userEmail) {
+         userController.updateModelDeleteUser(userEmail);
+    }
+
+    public void changeUserPassword(String userEmail, String newPassword) {
+          userController.updateModelChangePassword(userEmail, newPassword);
+    }
+
 }

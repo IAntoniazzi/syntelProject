@@ -16,16 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sql.rowset.JdbcRowSet;
-import javax.sql.rowset.RowSetProvider;
 
 /**
  *
  * @author syntel
  */
 public class Connector {
-
-    //JdbcRowSet jRS;
+    
     Connection conn;
     MenuController meals;
     List<MenuController> mealsList = new ArrayList<>();
@@ -41,26 +38,26 @@ public class Connector {
         }
     }
 
-    public void disableQuery(String cmd) {
+    public void disableUserQuery(String cmd) {
         try {
             PreparedStatement pstmt = conn.prepareStatement("Update Online_user set status = 'Disabled' where email=?");
             pstmt.setString(1, cmd);
             int count = pstmt.executeUpdate();
             if (count == 1) {
-                System.out.println("User " + cmd + " has been disabled!");
+                System.out.println("User" + cmd + ": status changed to disabled!");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void enableQuery(String cmd) {
+    public void enableUserQuery(String cmd) {
         try {
             PreparedStatement pstmt = conn.prepareStatement("Update Online_user set status = 'Enabled' where email=?");
             pstmt.setString(1, cmd);
             int count = pstmt.executeUpdate();
             if (count == 1) {
-                System.out.println("User " + cmd + " has been disabled!");
+                System.out.println("User" + cmd + ": status changed to enabled!");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,23 +68,49 @@ public class Connector {
         try {
             //PreparedStatement pstmt = conn.prepareStatement("Select Food_item, description, price from food_item");
             Statement st = conn.createStatement();
-            ResultSet rs =   st.executeQuery("Select name, description, price, type, is_veg from food_item");
-           while(rs.next()){
-               String name = rs.getString(1);
-               String desc = rs.getString(2);
-               double price = rs.getDouble(3);
-               String type = rs.getString(4);
-               String veg = rs.getString(5);
-               meals = new MenuController(name, desc, price, type, veg);
-               mealsList.add(meals);
-           }
-           
-           //meals.toString();
-           
+            ResultSet rs = st.executeQuery("Select name, description, price, type, is_veg from food_item");
+            while (rs.next()) {
+                String name = rs.getString(1);
+                String desc = rs.getString(2);
+                double price = rs.getDouble(3);
+                String type = rs.getString(4);
+                String veg = rs.getString(5);
+                meals = new MenuController(name, desc, price, type, veg);
+                mealsList.add(meals);
+            }
+
+            //meals.toString();
         } catch (SQLException ex) {
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mealsList;
+    }
+
+    public void deleteUserQuery(String cmd) {
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("Delete from Online_user where email=?");
+            pstmt.setString(1, cmd);
+            int count = pstmt.executeUpdate();
+            if (count == 1) {
+                System.out.println("User " + cmd + " has been deleted!");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void changePasswordQuery(String cmd, String password) {
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("Update Online_user set password = ? where email=?");
+            pstmt.setString(1, password);
+            pstmt.setString(2, cmd);
+            int count = pstmt.executeUpdate();
+            if (count == 1) {
+                System.out.println("User " + cmd + " password has been updated!");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
