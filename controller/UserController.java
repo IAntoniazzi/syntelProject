@@ -12,6 +12,7 @@ import model.UserInfo;
  * @author syntel
  */
 public class UserController {
+
     private String email;
     UserInfo info;
 
@@ -19,19 +20,34 @@ public class UserController {
         return email;
     }
 
+    public void updateModelEnableUser(String userEmail) {
+        info = new UserInfo();
+        info.adminEnableUser(email);
+    }
+
     public void updateModelDisableUser(String email) {
         info = new UserInfo();
         info.adminDisableUser(email);
     }
-    
-    public void login(String email, String password){
+
+    public void updateModelDeleteUser(String email) {
+        info = new UserInfo();
+        info.adminDeleteUser(email);
+    }
+
+    public void login(String email, String password) {
         info.login(email, password);
         info.isAdminOrCustomer(email, password);
-        
-        if(info.isAdminOrCustomer(email, password).equals("Admin")){
-            
+
+        if (info.isAdminOrCustomer(email, password).equals("Admin")) {
+
         }
-        
+
     }
-    
+
+    public void updateModelChangePassword(String userEmail, String password) {
+        info = new UserInfo();
+        info.adminChangeUserPassword(email, password);
+    }
+
 }

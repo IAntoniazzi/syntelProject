@@ -6,52 +6,29 @@
 package view;
 
 import controller.UserController;
-import java.util.Scanner;
 
 /**
  *
  * @author syntel
  */
 public class ManageUserView {
-    
-    public static void main(String [] args){
-        UserController userController = new UserController();
-        Scanner input = new Scanner(System.in);
-        
-       /* System.out.println("Enter 1 to see menu");
-        int menuResponse =  input.nextInt();
-         if(menuResponse == 1){
-            //View.showMenu();
-         }*/
-        
-        System.out.println("Enter 1 to enable user");
-        System.out.println("Enter 2 to disable user");
-        System.out.println("Enter 3 to delete user");
-        
-        int response = input.nextInt();
-        if(response == 1){
-            System.out.println("Enter User Email to enable");
-            String userEmail = input.next();
-            userController.updateModelEnableUser(userEmail);
-        }
-        
-        if(response == 2){
-            System.out.println("Enter User Email to disable");
-            String userEmail = input.next();
-            userController.updateModelDisableUser(userEmail);
-        }
-        
-          if(response == 3){
-            System.out.println("Enter User Email to delete");
-            String userEmail = input.next();
-            userController.updateModelDeleteUser(userEmail);
-        }
-        
-         //System.out.println("Enter 3 to delete password");
-        
-        input.close();
-    }
-    
 
-    
+    UserController userController = new UserController();
+
+    public void enableUser(String userEmail) {
+        userController.updateModelEnableUser(userEmail);
+    }
+
+    public void disableUser(String userEmail) {
+         userController.updateModelDisableUser(userEmail);
+    }
+
+    public void deleteUser(String userEmail) {
+         userController.updateModelDeleteUser(userEmail);
+    }
+
+    public void changeUserPassword(String userEmail, String newPassword) {
+          userController.updateModelChangePassword(userEmail, newPassword);
+    }
+
 }

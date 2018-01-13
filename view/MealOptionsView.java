@@ -5,21 +5,15 @@
  */
 package view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author syntel
  */
 public class MealOptionsView {
-     public static void main(String [] args){
+
+    public void showMenuView() {
         Menu showMenu = new Menu();
-        Scanner input = new Scanner(System.in);
-        
-        System.out.println("Enter 1 to see menu");
-        int menuResponse =  input.nextInt();
-        if(menuResponse == 1){   
-           showMenu.displayMenu();
-        }
-     }
+        showMenu.displayMenu();
+    }
+
 }

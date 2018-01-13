@@ -5,41 +5,43 @@
  */
 package model;
 
-import java.sql.PreparedStatement;
-
 /**
  *
  * @author syntel
  */
 public class UserInfo {
-     Connector user;
-     
-    //admin disable user
-    public void adminDisableUser(String userEmail){
-       user = new Connector();
+
+    Connector user;
+
+    public void adminDisableUser(String userEmail) {
+        user = new Connector();
         user.disableUserQuery(userEmail);
     }
-    
-    public void adminEnableUser(String userEmail){
-       user = new Connector();
+
+    public void adminEnableUser(String userEmail) {
+        user = new Connector();
         user.enableUserQuery(userEmail);
     }
-    
-    
-    public boolean login(String email, String password){
-        
+
+    public boolean login(String email, String password) {
+
         //
         return true;
     }
 
-    public String isAdminOrCustomer(String email, String password){
+    public String isAdminOrCustomer(String email, String password) {
         //if user is admin
         return "Admin";
     }
 
     public void adminDeleteUser(String email) {
-             user = new Connector();
-             user.deleteUserQuery(email);
+        user = new Connector();
+        user.deleteUserQuery(email);
     }
-    
+
+    public void adminChangeUserPassword(String email, String password) {
+        user = new Connector();
+        user.changePasswordQuery(email, password);
+    }
+
 }

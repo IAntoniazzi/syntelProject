@@ -13,6 +13,8 @@ import java.util.Scanner;
  */
 public class MainView {
     public static void main(String[] args){
+        MealOptionsView mealOptions = new  MealOptionsView();
+        Menu showMenu = new Menu();
         LoginView login = new LoginView();
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to Mummy's Restaurant");
@@ -25,7 +27,7 @@ public class MainView {
          
         int response = input.nextInt();
         if(response == 1){
-            //go to show menu 
+            mealOptions.showMenuView();
         }
         
         if(response == 2){
