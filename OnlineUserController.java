@@ -3,17 +3,17 @@ public class OnlineUserController {
    private OnlineUser model;
    private OnlineUserView view;
 
-   public OnlineUserController(OnlineUserModel model, OnlineUserView view){
+   public OnlineUserController(OnlineUser model, OnlineUserView view){
       this.model = model;
       this.view = view;
    }
 
    public void setOnlineUserId(int Id){
-      model.setOnlineUserId(Id);		
+      model.setUserId(Id);		
    }
 
    public int getOnlineUserId(){
-      return model.getOnlineUserId();		
+      return model.getUserId();		
    }
 
    public void setFirstName(String FirstName){

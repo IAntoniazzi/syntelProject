@@ -1,3 +1,5 @@
+package com.syntel.Models;
+
 
 import java.util.ArrayList;
 
@@ -11,7 +13,7 @@ public class Orders {
     private String DeliveryDate;
     private String Time;
     private float Price;
-    private ArrayList<FoodItems> Items; 
+    private ArrayList<FoodItem> Items; 
      
     public Orders(int orderId, int userId, int addressId, String payment, String oDate, float price, String dDate, String dTime){
          this.OrderId = orderId;
@@ -61,12 +63,12 @@ public class Orders {
         return OrderDate;
     }
      
-    public String getDeliveryDate() {
-         return DeliveryDate;    
+    public String getDeliveryDate() {
+         return DeliveryDate;
     }
-    
+    
     public void setDeliveryDate(String DeliveryDate) {
-         this.DeliveryDate = DeliveryDate;    
+         this.DeliveryDate = DeliveryDate;
     }
     
      public void setOrderDate(String DeliveryDate) {
@@ -98,11 +100,13 @@ public class Orders {
     }
     
     public void addItem(FoodItem Item){
-        this.setItems(this.getItems().add(Item));
+        //this.setItems(this.getItems().add(Item));
+        this.getItems().add(Item);
     }
     
     public void removeItem(FoodItem Item){
-        this.setItems(this.getItems().remove(Item)); 
+        //this.setItems(this.getItems().remove(Item)); 
+        this.getItems().remove(Item);
     }
 
 

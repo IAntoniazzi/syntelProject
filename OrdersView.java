@@ -8,7 +8,7 @@ public class OrdersView {
       System.out.println("For User: " + UserId);
       System.out.println("To Address: " + AddressId);
       System.out.println("Payment Method: " + PaymentMethod);
-      System.out.println("Ordered On: " + oDate);      
+      System.out.println("Ordered On: " + oDate);
       System.out.println("Scheduled for Delivery On: " + dDate + " at " + Time);
       System.out.println("Price: $" + Price);
       System.out.println("Items: ");

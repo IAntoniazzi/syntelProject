@@ -7,7 +7,7 @@ package com.syntel.Scenes;
 
 import com.syntel.DatabaseAction;
 import static com.syntel.Scenes.Scene.matchInputWithChoice;
-import com.syntel.models.Address;
+import com.syntel.Models.Address;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,11 +69,13 @@ public class AreaManageScene extends Scene {
     public void displayAreas()
     {
         List<Address> deliverableAreas;
+        /*
         deliverableAreas = DatabaseAction.getDeliverableAreas();
         for ( int i = 0; i < deliverableAreas.size(); i++ )
         {
             System.out.println( deliverableAreas.get( i ).getZip() );
-        }  
+        } 
+        */
     }
     
     public void promptRemoveArea()
@@ -90,6 +92,7 @@ public class AreaManageScene extends Scene {
         String zip = scanner.nextLine();
         Address newZipAddress = new Address();
         newZipAddress.setZip( zip );
+        /*
         if ( DatabaseAction.createDeliverableArea( newZipAddress ) )
         {
             System.out.println( "Added new delivery area: " + zip );
@@ -99,6 +102,7 @@ public class AreaManageScene extends Scene {
             System.out.println( "Could not add area: " + zip );
             //TODO: throw exception
         }
+        */
     }
     
     public void promptPackageAvailability()

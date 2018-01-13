@@ -73,9 +73,7 @@ public class DatabaseAction {
         return true;
     }
 
-    /**
-     * The administrators set specials for the day
-     */
+    /*
     public static List<Package> getTodaysSpecials() {
         return new ArrayList<>();
     }
@@ -91,5 +89,5 @@ public class DatabaseAction {
         toReturn.get( 0 ).setZip( "12345" );        
         return toReturn;    
     }
-
+    */
 }

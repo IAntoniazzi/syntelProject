@@ -11,10 +11,10 @@ import java.util.Scanner;
  *
  * @author syntel
  */
-public class LoginView {
+public class UserLoginView {
     
     public void login(String email, String password){
-       userControllerLogin(email, password);
+       //userControllerLogin(email, password);
     }
     
 

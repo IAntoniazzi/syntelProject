@@ -1,22 +1,24 @@
 
+import com.syntel.Models.Orders;
+import com.syntel.Models.FoodItem;
 import java.util.ArrayList;
 
 
 public class OrdersController {
-     private Orders model;
-   private OrdersView view;
+    private Orders model;
+    private OrdersView view;
 
-   public OrdersController(OrdersModel model, OrdersView view){
+   public OrdersController(Orders model, OrdersView view){
       this.model = model;
       this.view = view;
    }
 
    public void setOrdersId(int Id){
-      model.setOrdersId(Id);		
+      model.setOrderId(Id);		
    }
 
    public int getOrdersId(){
-      return model.getOrdersId();		
+      return model.getOrderId();		
    }
 
   
@@ -25,7 +27,7 @@ public class OrdersController {
    }
 
    public int getAddressId(){
-      return model.getaddressId();		
+      return model.getAddressId();		
    }
    
    public void setPaymentMethod(String PaymentMethod){
@@ -45,12 +47,12 @@ public class OrdersController {
    }
      
    public void setDeliveryDate(String Date){
-        model.setDeliveryDate(Date);     
+        model.setDeliveryDate(Date);
    }
      
-   public String getDeliveryDate(){
+    public String getDeliveryDate(){
         return model.getDeliveryDate();
-   }   
+   }
    
    public void setTime(String Time) {
         model.setTime(Time);

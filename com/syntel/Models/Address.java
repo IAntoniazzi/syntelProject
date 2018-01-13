@@ -1,4 +1,4 @@
-package com.syntel.models;
+package com.syntel.Models;
 
 public class Address {
     private int AddressId;

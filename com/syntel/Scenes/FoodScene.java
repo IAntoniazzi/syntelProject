@@ -28,7 +28,7 @@ public class FoodScene extends Scene {
         state = State.Options;
         retrievedFoods = DatabaseAction.getFood(SessionState.customer);
         // mix todaysSpecial orders with retrievedFoods?
-        todaysSpecials = DatabaseAction.getTodaysSpecials();
+        todaysSpecials = new ArrayList<>();//DatabaseAction.getTodaysSpecials();
         addedItems = new ArrayList<>();
     }
 

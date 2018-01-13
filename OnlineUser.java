@@ -13,7 +13,7 @@ public class OnlineUser {
     public OnlineUser(int id, String fname, String lname, String isAdmin, String pword, String email, int addressId, String status){
         this.UserId = id;
         this.FirstName = fname;
-        this.LastNAme = lname;
+        this.LastName = lname;
         if(isAdmin.compareToIgnoreCase("yes")==0){
             this.IsAdmin = true;
         }

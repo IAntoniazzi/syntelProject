@@ -8,6 +8,6 @@ public class FoodItemView {
           System.out.println("This item is vegetarian");
       }
       System.out.println(Image);
-      System.out.println("Available in: " + Availability;
+      System.out.println("Available in: " + Availability );
    }
 }

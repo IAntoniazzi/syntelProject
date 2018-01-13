@@ -7,9 +7,9 @@ public class FoodItem {
     private String Type;
     private boolean IsVeg;
     private String Image;
-    private int Availability
+    private int Availability;
 
-    public FoodItem(int id, string name, string description, float price, string type, boolean veg; string image, int availability){
+    public FoodItem(int id, String name, String description, float price, String type, boolean veg, String image, int availability){
         this.FoodItemId = id;
         this.Name = name;
         this.Description = description;

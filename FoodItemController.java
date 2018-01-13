@@ -66,12 +66,12 @@ public class FoodItemController {
         return model.getImage();
     }
     
-    public void setAvailability(int Availability){      
-        model.setAvailability(Availability);     
+    public void setAvailability(int Availability){
+        model.setAvailability(Availability);
     }
     
-    public int getAvailability(){      
-        return model.getAvailability();     
+    public int getAvailability(){
+        return model.getAvailability();
     }
  
 }

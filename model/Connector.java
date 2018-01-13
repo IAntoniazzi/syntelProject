@@ -5,7 +5,9 @@
  */
 package model;
 
+import com.syntel.Models.Orders;
 import controller.MenuController;
+import java.nio.ByteBuffer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -112,5 +114,47 @@ public class Connector {
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+       
+    public ArrayList<Orders> selectOrdersSortColumn( String columnName )
+    {
+        ArrayList<Orders> ordersList = new ArrayList<>();
+        try 
+        {
+            //PreparedStatement pstmt = conn.prepareStatement("Select Food_item, description, price from food_item");
+            Statement st = conn.createStatement();
+            //TODO: change this query to get orders
+            //TODO: need to use order by based on the column name given
+            ResultSet rs = st.executeQuery("SELECT * FROM orders ORDER BY " + columnName );
+            while(rs.next())
+            {
+                
+                //public Orders(int orderId, int userId, int addressId, String payment, String oDate, float price, String dDate, String dTime)
+                Orders order = new Orders(
+                        //convert the order_id from bytes to an integer
+                        ByteBuffer.wrap( rs.getBytes( "order_id" ) ).getInt(),
+                        ByteBuffer.wrap( rs.getBytes( "user_id" ) ).getInt(),
+                        ByteBuffer.wrap( rs.getBytes( "address_id" ) ).getInt(),
+                        rs.getString( "payment_type" ),
+                        rs.getString( "order_date" ),
+                        rs.getFloat( "price" ),
+                        rs.getString( "delivery_date" ),
+                        rs.getString( "delivery_time" )
+                );
+                
+                ordersList.add( order );
+                //TODO: create an order object from database values object
+                //TODO: then add it to the orderlist
+           }
+                  
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
+        
+        }
+        
+        return ordersList;
+    }
+
 
 }
