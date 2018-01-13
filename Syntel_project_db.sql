@@ -1,3 +1,18 @@
+Alter table Order_Items drop constraint Order_items_fk;
+Alter table Order_Items drop constraint Food_item_fk;
+Alter table Food_item drop constraint Availability_fk;
+Alter table Availability drop constraint zip_code_fk;
+Alter table Orders drop constraint order_address_id_fk;
+Alter table Online_User drop constraint user_address_id_fk;
+
+Drop Table Availability;
+Drop Table Food_item;
+Drop Table Address;
+Drop Table Orders;
+Drop Table Online_user;
+Drop Table Service_areas;
+Drop Table Order_items;
+
 CREATE TABLE Availability (
   availability_id raw(16) default sys_guid() Primary Key,
   zip_code Number,
@@ -62,20 +77,20 @@ CREATE TABLE Order_Items (
    CONSTRAINT order_items_pk PRIMARY KEY (order_id, food_item_id)
 );
 
-Alter Table Order_Items ADD  CONSTRAINT Order_items_fk FOREIGN KEY (order_id) REFERENCES Orders (order_id);
-Alter Table Order_Items ADD  CONSTRAINT Food_item_fk FOREIGN KEY (food_item_id) REFERENCES Food_item (food_item_id);
-Alter Table Food_item ADD  CONSTRAINT Availability_fk FOREIGN KEY (availability_id) REFERENCES Availability (Availability_id);
-Alter Table Availability ADD  CONSTRAINT zip_code_fk FOREIGN KEY (zip_code) REFERENCES Service_areas (zip_code);
-Alter Table Orders ADD  CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES Online_User (user_id);
-Alter Table Orders ADD  CONSTRAINT order_address_id_fk FOREIGN KEY (address_id) REFERENCES Address (address_id);
-Alter Table Online_User ADD  CONSTRAINT user_address_id_fk FOREIGN KEY (address_id) REFERENCES Address (address_id);
+Alter Table Order_Items ADD  CONSTRAINT Order_items_fk FOREIGN KEY (order_id) REFERENCES Orders (order_id) on delete cascade;
+Alter Table Order_Items ADD  CONSTRAINT Food_item_fk FOREIGN KEY (food_item_id) REFERENCES Food_item (food_item_id) on delete cascade;
+Alter Table Food_item ADD  CONSTRAINT Availability_fk FOREIGN KEY (availability_id) REFERENCES Availability (Availability_id) on delete cascade;
+Alter Table Availability ADD  CONSTRAINT zip_code_fk FOREIGN KEY (zip_code) REFERENCES Service_areas (zip_code) on delete cascade;
+Alter Table Orders ADD  CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES Online_User (user_id) on delete cascade;
+Alter Table Orders ADD  CONSTRAINT order_address_id_fk FOREIGN KEY (address_id) REFERENCES Address (address_id) on delete cascade;
+Alter Table Online_User ADD  CONSTRAINT user_address_id_fk FOREIGN KEY (address_id) REFERENCES Address (address_id) on delete cascade;
 
 Insert into Service_areas values (40201);
 Insert into Service_areas values (30201);
 Insert into Service_areas values (25301);
 Insert into Service_areas values (10001);
 
-Insert into Availability (zip_code, time, begin_date, end_date) values --(40201, Current_timestamp, sysdate, '09-DEC-18');
+Insert into Availability (zip_code, time, begin_date, end_date) values (40201, Current_timestamp, sysdate, '09-DEC-18');
 
 Insert into Availability (zip_code, time, begin_date, end_date) values (30201, Current_timestamp, sysdate, '09-DEC-18');
 
