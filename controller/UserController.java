@@ -47,7 +47,7 @@ public class UserController {
 
     public void updateModelChangePassword(String userEmail, String password) {
         info = new UserInfo();
-        info.adminChangeUserPassword(email, password);
+        info.adminChangeUserPassword(userEmail, password);
     }
 
 }
