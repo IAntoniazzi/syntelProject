@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.syntel.Models;
+package src.com.syntel.Models;
+
+import model.Connector;
 
 /**
  *
