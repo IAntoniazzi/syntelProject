@@ -7,6 +7,7 @@ package controller;
 
 import java.util.List;
 import model.MenuInfo;
+import view.MealOptionsView;
 
 /**
  *
@@ -14,8 +15,9 @@ import model.MenuInfo;
  */
 public class MenuController {
     MenuInfo info;
+    MealOptionsView mealsView;
     //private String foodItemId;
-    private String Name;
+    private String name;
     private String desc;
     private double price;
     private String type;
@@ -26,7 +28,7 @@ public class MenuController {
     }
 
     public MenuController(String Name, String desc, double price, String type, String veg) {
-        this.Name = Name;
+        this.name = Name;
         this.desc = desc;
         this.price = price;
         this.type = type;
@@ -34,11 +36,11 @@ public class MenuController {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String Name) {
-        this.Name = Name;
+        this.name = Name;
     }
 
     public String getDesc() {
@@ -75,23 +77,19 @@ public class MenuController {
     
      public void showMenu() {
         info = new MenuInfo();
-        List<MenuController> disp = info.getMenuOptions();
-        displayOptions(disp);
+        mealsView = new MealOptionsView();
+        List<MenuController> items = info.getMenuOptions();
+        items.forEach((mealItem) -> {
+             mealsView.printMenuItems(mealItem.toString());
+        });
     }
      
-     private void displayOptions(List items){
-         for(Object mealItem : items){
-             System.out.println(mealItem.toString());
-         }
-     }
      
-      private void printMealOptions(List items){
-      
-     }
-
     @Override
     public String toString() {
-        return "MenuController{" + "Name=" + Name + ", desc=" + desc + ", price=" + price + ", type=" + type + ", veg=" + veg + '}';
+        String result = "-----------------------------------------------------------\n"
+                         + "Name: " + name + "\n" + "Description: " + desc + "\n" + "Price: $" + price + "\n" + "Type: " + type + "\n" ;             
+        return result;
     }
      
      

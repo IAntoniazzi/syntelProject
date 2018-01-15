@@ -15,75 +15,59 @@ public class MainView {
 
     public static void main(String[] args) {
         MealOptionsView mealOptions = new MealOptionsView();
-        ManageUserView userView = new ManageUserView();
-        Menu showMenu = new Menu();
-        LoginView login = new LoginView();
+        LoginView loginView = new LoginView();
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to Mummy's Restaurant");
         System.out.println("---------------------------------------------");
 
-        System.out.println("Enter 1 to view Restaurant Menu");
-        // System.out.println("Enter 2 to Login");
-        System.out.println("Enter 3 to Register");
-        System.out.println("Enter 4 to Exit");
+        while (true) {
+            System.out.println("Enter 1 to Login");
+            System.out.println("Enter 2 to view Restaurant Menu");
+            System.out.println("Enter 3 to Register"); 
+            System.out.println("Enter 4 to Exit");
+            
+            int response = Integer.parseInt(input.nextLine());
+            
+            if (response == 1) {
+                System.out.println("Enter email below:");
+                String email = input.nextLine();
+                System.out.println("Enter password below:");
+                String password = input.nextLine();
+                loginView.login(email, password);  
+            }
+            
+            if (response == 2) {
+                mealOptions.getMenuItems();
+            }
 
-        int response = input.nextInt();
-        //after login in and user has been verified as admin, then show admin options:
-        //enclose in an if block like
-        //if(user == "Admin") {
-        System.out.println("Enter 5 to enable user");
-        System.out.println("Enter 6 to disable user");
-        System.out.println("Enter 7 to delete user");
-        System.out.println("Enter 8 to change user password");
+            if (response == 3) {
+                //go to register 
+                System.out.println("Please Enter your First Name below:");
+                String fname = input.nextLine();
+                System.out.println("\nPlease Enter your Last Name below:");
+                String lname = input.nextLine();
+                System.out.println("\nPlease Enter your email below:");
+                String email = input.nextLine();
+                System.out.println("\nPlease Enter your password below:");
+                String passWrd = input.nextLine();
+                System.out.println("\nPlease Enter your Street address below:");
+                String strAddress = input.nextLine();
+                System.out.println("\nPlease Enter your City below:");
+                String city = input.nextLine();
+                System.out.println("\nPlease Enter your State below (abbreviated like 'TX'):");
+                String state = input.nextLine();
+                System.out.println("\nPlease Enter your zip code below:");
+                int zipCode = Integer.parseInt(input.nextLine());
+                loginView.register(fname, lname, email, passWrd, strAddress, city, state, zipCode);
+                
+            }
 
-        if (response == 5) {
-            System.out.println("Enter User Email to enable");
-            String userEmail = input.next();
-            userView.enableUser(userEmail);
+            if (response == 4) {
+                System.out.println("Thank you for visiting Mummy's Restaurant. Please come again soon.");
+                System.exit(0);
+            }
+
         }
-
-        if (response == 6) {
-            System.out.println("Enter User Email to enable");
-            String userEmail = input.next();
-            userView.disableUser(userEmail);
-        }
-
-        if (response == 7) {
-            System.out.println("Enter User Email to delete");
-            String userEmail = input.next();
-            userView.deleteUser(userEmail);
-        }
-
-        if (response == 8) {
-            System.out.println("Enter User Email to change password");
-            String userEmail = input.next();
-            System.out.println("Enter new password");
-            String newPassword = input.next();
-            userView.changeUserPassword(userEmail, newPassword);
-        }
-        //}
-
-        if (response == 1) {
-            mealOptions.showMenuView();
-        }
-
-        if (response == 2) {
-            //go to login
-            System.out.println("Enter email below:");
-            String email = input.next();
-            System.out.println("Enter password below:");
-            String password = input.next();
-            login.login(email, password);  //this doesn't go anywhere yet
-        }
-
-        if (response == 3) {
-            //go to register 
-        }
-
-        if (response == 4) {
-            System.exit(1);
-        }
-
     }
-
 }
+     
