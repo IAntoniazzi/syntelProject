@@ -7,9 +7,10 @@ package com.syntel.Scenes;
 
 import com.syntel.DatabaseAction;
 import static com.syntel.Scenes.Scene.matchInputWithChoice;
-import com.syntel.models.Address;
+import com.syntel.Models.Address;
 import java.util.ArrayList;
 import java.util.List;
+import com.syntel.Controller.AreaManagementController;
 
 /**
  *
@@ -86,11 +87,11 @@ public class AreaManageScene extends Scene {
     
     public void promptAddArea()
     {
+        AreaManagementController amc = new AreaManagementController();
         System.out.print( "Enter new zip code: " );
         String zip = scanner.nextLine();
-        Address newZipAddress = new Address();
-        newZipAddress.setZip( zip );
-        if ( DatabaseAction.createDeliverableArea( newZipAddress ) )
+        amc.editZip(zip);
+        if (amc.addArea(amc.getZip()))
         {
             System.out.println( "Added new delivery area: " + zip );
         }
@@ -110,3 +111,4 @@ public class AreaManageScene extends Scene {
         System.out.println( "TODO: need package availability functionality" );
     }
 }
+
