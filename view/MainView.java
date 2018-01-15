@@ -30,9 +30,9 @@ public class MainView {
             
             if (response == 1) {
                 System.out.println("Enter email below:");
-                String email = input.next();
+                String email = input.nextLine();
                 System.out.println("Enter password below:");
-                String password = input.next();
+                String password = input.nextLine();
                 loginView.login(email, password);  
             }
             

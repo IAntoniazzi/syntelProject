@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class LoginView {
 
     UserController userController;
-    MealOptionsView mealOptions = new MealOptionsView();
+    MealOptionsView mealOptions ;
     
     public void login(String email, String password) {
        userController  = new UserController();
@@ -32,6 +32,7 @@ public class LoginView {
 
     public void adminUser() {
         Scanner input = new Scanner(System.in);
+        userController  = new UserController();
         System.out.println("Welcome, admin!");
 
         System.out.println("Enter 5 to enable user");
@@ -75,6 +76,7 @@ public class LoginView {
 
     public void nonAdminUser(String name) {
         //From here, user can see options to order a meal or package
+        mealOptions = new MealOptionsView();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate localDate = LocalDate.now();
         System.out.println(dtf.format(localDate));
@@ -87,14 +89,14 @@ public class LoginView {
 
     public void printUpdatedResponse(int i) {
         switch(i){
-            case 0: System.out.println("User successfully disabled!\n"); break;
-            case 1: System.out.println("User successfully enabled!\n"); break;
-            case 2: System.out.println("User successfully deleted!\n"); break;
-            case 3: System.out.println("Password changed successfully!\n"); break;
-            case 4: System.out.println("Email already exists. Please try another one.\n"); break;
-            case 5: System.out.println("You have successfully registered!\n"); break;
-            case 6: System.out.println("Email already exists. Please try another one.\n"); break;
-            case 7: System.out.println("Invalid email and password combination.\n"); break;
+            case 0: System.out.println("\nUser successfully disabled!"); break;
+            case 1: System.out.println("\nUser successfully enabled!"); break;
+            case 2: System.out.println("\nUser successfully deleted!"); break;
+            case 3: System.out.println("\nPassword changed successfully!"); break;
+            case 4: System.out.println("\nEmail already exists. Please try another one."); break;
+            case 5: System.out.println("\nYou have successfully registered!"); break;
+            case 6: System.out.println("\nEmail already exists. Please try another one."); break;
+            case 7: System.out.println("\nInvalid email and password combination."); break;
             default: break;
         }
     }
