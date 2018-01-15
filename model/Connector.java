@@ -112,5 +112,61 @@ public class Connector {
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean addZipToServiceArea(String zip){
+        try{
+            PreparedStatement pstmt = conn.prepareStatement("insert into service_areas (zip_code) values (?)");
+            pstmt.setString(1,zip);
+            int count = pstmt.executeUpdate();
+            if (count == 1){
+                return true;
+            }
+        }catch(SQLException ex){
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean removeZipFromServiceArea(String zip){
+        try{
+            PreparedStatement pstmt = conn.prepareStatement("Delete from service_areas where zip_code = ?");
+            pstmt.setInt(1,Integer.parseInt(zip));
+            int count = pstmt.executeUpdate();
+            if (count == 1){
+                return true;
+            }
+        }catch(SQLException ex){
+            return false;
+        }
+        return false;
+    }
 
+    public List getAreas(){
+        List<String> allAreas = new ArrayList<>();
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT zip_code from service_areas");
+            while(rs.next()){
+                allAreas.add(rs.getString(1));
+            }
+        }catch(SQLException ex){
+            System.out.println("Unable to fetch areas from database.");
+        }
+        return allAreas;
+    }
+    
+    public List getFoodItemsInArea(String zip){
+        List<String> foodInArea = new ArrayList();
+        try{
+            PreparedStatement pstmt = conn.prepareStatement("select name || ' - ' || description as Food_Item from food_item fi join availability a on fi.availability_id = a.availability_id join service_areas se on a.zip_code = se.zip_code where se.zip_code = ?");
+            pstmt.setInt(1, Integer.parseInt(zip));
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()){
+                foodInArea.add(rs.getString(1));
+            }
+        }catch(SQLException ex){
+            System.out.println("Unable to get food in "+zip);
+        }
+        return foodInArea;
+    }
 }

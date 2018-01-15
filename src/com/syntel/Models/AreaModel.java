@@ -5,6 +5,7 @@
  */
 package src.com.syntel.Models;
 
+import java.util.List;
 import model.Connector;
 
 /**
@@ -21,5 +22,15 @@ public class AreaModel {
     public boolean removeArea(String zip){
         conn = new Connector();
         return conn.removeZipFromServiceArea(zip);
+    }
+    
+    public List<String> getAreas(){
+        conn = new Connector();
+        return conn.getAreas();
+    }
+    
+    public List<String> getFoodInAreas(String zip){
+        conn = new Connector();
+        return conn.getFoodItemsInArea(zip);
     }
 }
