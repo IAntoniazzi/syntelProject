@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.syntel.Scenes;
+package src.com.syntel.Scenes;
 
-import com.syntel.DatabaseAction;
-import static com.syntel.Scenes.Scene.matchInputWithChoice;
-import com.syntel.models.Address;
 import java.util.ArrayList;
 import java.util.List;
+import controller.AreaManagementController;
 
 /**
  *
@@ -53,7 +51,7 @@ public class AreaManageScene extends Scene {
             case "Remove Area":
                 promptRemoveArea();
                 break;
-            case "Edit Package Availability":
+            case "View Package Availability":
                 promptPackageAvailability();
                 break;
             case "Back":
@@ -68,29 +66,33 @@ public class AreaManageScene extends Scene {
 
     public void displayAreas()
     {
-        List<Address> deliverableAreas;
-        deliverableAreas = DatabaseAction.getDeliverableAreas();
+        AreaManagementController amc = new AreaManagementController();
+        List<String> deliverableAreas;
+        deliverableAreas = amc.getAreas();
         for ( int i = 0; i < deliverableAreas.size(); i++ )
         {
-            System.out.println( deliverableAreas.get( i ).getZip() );
+            System.out.println( deliverableAreas.get( i ) );
         }  
     }
     
     public void promptRemoveArea()
     {
+        AreaManagementController amc = new AreaManagementController();
         System.out.print( "Enter zip code to remove: " );
         String zip = scanner.nextLine();
         //TODO: need to put together when Database functionality in place
-        System.out.println( "TODO: need remove functionality" );
+        if (!amc.removeArea(zip)){
+            System.out.print("Unable to remove area. Current Orders Exist");
+        };
+        //System.out.println( "TODO: need remove functionality" );
     }
     
     public void promptAddArea()
     {
+        AreaManagementController amc = new AreaManagementController();
         System.out.print( "Enter new zip code: " );
         String zip = scanner.nextLine();
-        Address newZipAddress = new Address();
-        newZipAddress.setZip( zip );
-        if ( DatabaseAction.createDeliverableArea( newZipAddress ) )
+        if (amc.addArea(zip))
         {
             System.out.println( "Added new delivery area: " + zip );
         }
@@ -104,9 +106,16 @@ public class AreaManageScene extends Scene {
     public void promptPackageAvailability()
     {
         //TODO: display packages
-        System.out.print( "Enter package id: " );
+        AreaManagementController amc = new AreaManagementController();
+        System.out.print( "Enter zip code: " );
         String zip = scanner.nextLine();
+        List<String> packages = amc.getFoodInAreas(zip);
+        for(int i = 0;i<packages.size();i++){
+            System.out.println(packages.get(i));
+        }
+        
         //TODO: put together when database has functionality
-        System.out.println( "TODO: need package availability functionality" );
+        //System.out.println( "TODO: need package availability functionality" );
     }
 }
+
