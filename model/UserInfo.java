@@ -23,12 +23,6 @@ public class UserInfo {
         user.enableUserQuery(userEmail);
     }
 
-    public boolean login(String email, String password) {
-
-        //
-        return true;
-    }
-
     public String isAdminOrCustomer(String email, String password) {
         //if user is admin
         return "Admin";
@@ -42,6 +36,16 @@ public class UserInfo {
     public void adminChangeUserPassword(String email, String password) {
         user = new Connector();
         user.changePasswordQuery(email, password);
+    }
+
+    public String loginUser(String email, String password) {
+         user = new Connector();
+         return user.loginQuery(email, password);
+    }
+
+    public void registerNewUser(String fname, String lname, String email, String passWrd, String strAddress, String city, String state, int zipCode) {
+       user = new Connector();
+       user.registerNewUserQuery( fname, lname, email, passWrd, strAddress, city, state, zipCode);
     }
 
 }

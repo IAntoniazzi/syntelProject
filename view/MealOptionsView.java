@@ -5,15 +5,23 @@
  */
 package view;
 
+import controller.MenuController;
+
 /**
  *
  * @author syntel
  */
 public class MealOptionsView {
+    //MenuController menu;
 
-    public void showMenuView() {
-        Menu showMenu = new Menu();
-        showMenu.displayMenu();
+    public void getMenuItems() {
+       MenuController menuController = new MenuController();
+       menuController.showMenu(); 
+    }
+
+    public void printMenuItems(String items) {
+       // menu = new MenuController();
+        System.out.println(items);
     }
 
 }
