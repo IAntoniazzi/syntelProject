@@ -1,7 +1,10 @@
+package controller;
 
+
+import com.syntel.Scenes.OrdersView;
 import com.syntel.Models.Orders;
-import com.syntel.Models.FoodItem;
 import java.util.ArrayList;
+import model.FoodItem;
 
 
 public class OrdersController {
@@ -13,20 +16,20 @@ public class OrdersController {
       this.view = view;
    }
 
-   public void setOrdersId(int Id){
+   public void setOrdersId(byte[] Id){
       model.setOrderId(Id);		
    }
 
-   public int getOrdersId(){
+   public byte[] getOrdersId(){
       return model.getOrderId();		
    }
 
   
-   public void setAddressId(int Id){
+   public void setAddressId(byte[] Id){
       model.setAddressId(Id);		
    }
 
-   public int getAddressId(){
+   public byte[] getAddressId(){
       return model.getAddressId();		
    }
    

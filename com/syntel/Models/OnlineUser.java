@@ -1,16 +1,27 @@
+package com.syntel.Models;
+
 
 public class OnlineUser {
-    private int UserId;
+    private byte[] UserId;
     private String FirstName;
     private String LastName;
     private String Email;
     private String Password;
     private String Phone;
-    private int AddressId;
+    private byte[] AddressId;
     private boolean IsAdmin;
     private boolean IsBanned;
+    private Address address;
 
-    public OnlineUser(int id, String fname, String lname, String isAdmin, String pword, String email, int addressId, String status){
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public OnlineUser(byte[] id, String fname, String lname, String isAdmin, String pword, String email, byte[] addressId, String status){
         this.UserId = id;
         this.FirstName = fname;
         this.LastName = lname;
@@ -32,11 +43,11 @@ public class OnlineUser {
     }
         
     
-    public int getUserId() {
+    public byte[] getUserId() {
         return UserId;
     }
 
-    public void setUserId(int UserId) {
+    public void setUserId(byte[] UserId) {
         this.UserId = UserId;
     }
 
@@ -80,11 +91,11 @@ public class OnlineUser {
         this.Phone = Phone;
     }
 
-    public int getAddressId() {
+    public byte[] getAddressId() {
         return AddressId;
     }
 
-    public void setAddressId(int AddressId) {
+    public void setAddressId(byte[] AddressId) {
         this.AddressId = AddressId;
     }
     

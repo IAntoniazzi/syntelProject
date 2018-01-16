@@ -1,6 +1,5 @@
 package com.syntel.Scenes;
 
-import com.syntel.DatabaseAction;
 import static com.syntel.Scenes.Scene.matchInputWithChoice;
 import com.syntel.SessionState;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public class RegisterScene extends Scene {
     public Scene transitionNext() {
         
         if (registering) {
-            boolean successful = DatabaseAction.createCustomer(email, password);
+            boolean successful = true;//DatabaseAction.createCustomer(email, password);
             
             if (!successful) {
                 System.out.println("Registration was unsuccessful.");
@@ -24,7 +23,7 @@ public class RegisterScene extends Scene {
             }
             
             // log them in after success
-            SessionState.customer = DatabaseAction.getCustomer(email, password);
+            //SessionState.customer = DatabaseAction.getCustomer(email, password);
         }
 
         return new HomeScene();

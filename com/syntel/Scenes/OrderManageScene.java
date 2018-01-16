@@ -1,10 +1,10 @@
 package com.syntel.Scenes;
 
-import com.syntel.Models.Order;
 import com.syntel.Models.Orders;
 import controller.OrderController;
 import java.util.ArrayList;
 import java.util.List;
+import model.Connector;
 
 /**
  *
@@ -30,9 +30,11 @@ public class OrderManageScene extends Scene
         List<String> choices = new ArrayList<>();
         choices.add( "Mode of payment" );
         choices.add( "Date" );
-        choices.add( "Area" );
+        choices.add( "Zip Code" );
         choices.add( "Price" );
         choices.add( "OrderID" );
+        choices.add( "Customer Email" );
+        choices.add( "Customer Name" );
         choices.add( "Back" );
         
         do {
@@ -45,7 +47,6 @@ public class OrderManageScene extends Scene
 
         } while (selectedChoice == null);
         
-        //TODO: customer name,customer email
         switch ( selectedChoice )
         {
             case "Mode of payment":
@@ -57,11 +58,17 @@ public class OrderManageScene extends Scene
             case "Price":
                 displayOrdersByColumn( "price" , "price" );
                 break;
-            case "Area":
+            case "Zip Code":
                 displayOrdersByArea();
                 break;
             case "OrderID":
                 displayOrdersByColumn( "order_id" , "order id" );
+                break;
+            case "Customer Name":
+                displayOrdersByCustomerColumn( "first_name" , "customer name" );
+                break;
+            case "Customer Email":
+                displayOrdersByCustomerColumn( "email" , "customer email" );
                 break;
             case "Back":
                 requestTransition = true;
@@ -73,6 +80,12 @@ public class OrderManageScene extends Scene
         }
     }
     
+    public void displayOrdersByCustomerColumn( String columnName, String description )
+    {
+        System.out.println( "Showing orders sorted by " + description );
+        displayOrders( control.getOrdersByCustomerColumn( columnName ) );
+    }
+    
     public void displayOrdersByColumn( String columnName, String description )
     {
         System.out.println( "Showing orders sorted by " + description );
@@ -82,13 +95,17 @@ public class OrderManageScene extends Scene
     public void displayOrdersByArea()
     {
         System.out.println( "Showing orders sorted by zip code" );
-        //TODO: connect to controller to get orders,make sure query has order by clause
-        //TODO: will need a join to get the addresses from address_id
-        System.out.println( "Not yet implemented" );
+        displayOrders( control.getOrdersByAddressZip() );
     }
     
     public static void main( String[] args )
     {
+        /*
+        //Seeing that selectAllFoodItems actually returns something without error
+        new Connector().selectAllFoodItems().forEach((foodItem) -> {
+            System.out.println( foodItem );
+        });
+        */
         OrderManageScene scene = new OrderManageScene();
         while ( true )
         {
@@ -103,15 +120,9 @@ public class OrderManageScene extends Scene
 
     public void displayOrders(ArrayList<Orders> orderList ) 
     {
-        System.out.println( "Order_Id\tDelivery Date\tPayment_Type\tPrice\tOrder_Date" );
-        for ( Orders order : orderList )
-        {
-            System.out.print( order.getOrderId()+ "\t" );
-            System.out.print( order.getDeliveryDate() + "\t" );
-            System.out.print( order.getPaymentMethod() + "\t" );
-            System.out.print( order.getPrice() + "\t" );
-            System.out.print( order.getOrderDate() + "\t" );
-            System.out.println();
-        }
+        System.out.println( "Order_Id\t\t\t\tPayment\tOrder Date\t\tDelivery Date\t\tPrice\tZip Code\tUser Email\tUser Name" );
+        orderList.forEach((order) -> {
+            System.out.println( order );
+        });
     }
 }

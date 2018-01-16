@@ -1,3 +1,5 @@
+package com.syntel.Scenes;
+
 
 public class FoodItemView {
     public void printFoodItem(String Name, String Description, float Price,  String Type, boolean IsVeg, String Image, int Availability){

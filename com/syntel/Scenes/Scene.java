@@ -41,7 +41,7 @@ public abstract class Scene {
     /**
      * Attempt to retrieve a choice given an index
      */
-    static <T> T matchInputWithChoice(String input, List<T> choices) {
+    public static <T> T matchInputWithChoice(String input, List<T> choices) {
 
         // Parse and match with the given selection
         try {

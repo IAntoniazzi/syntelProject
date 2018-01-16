@@ -1,3 +1,9 @@
+package controller;
+
+
+import com.syntel.Scenes.OnlineUserView;
+import com.syntel.Models.OnlineUser;
+
 public class OnlineUserController {
    
    private OnlineUser model;
@@ -8,11 +14,11 @@ public class OnlineUserController {
       this.view = view;
    }
 
-   public void setOnlineUserId(int Id){
+   public void setOnlineUserId(byte[] Id){
       model.setUserId(Id);		
    }
 
-   public int getOnlineUserId(){
+   public byte[] getOnlineUserId(){
       return model.getUserId();		
    }
 
@@ -56,11 +62,11 @@ public class OnlineUserController {
         return model.getPhone();
     }
 
-    public void setAddressId(int AddressId) {
+    public void setAddressId(byte[] AddressId) {
         model.setAddressId(AddressId);
     }
     
-    public int getAddressId() {
+    public byte[] getAddressId() {
         return model.getAddressId();
     }
  

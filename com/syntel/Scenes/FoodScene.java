@@ -1,15 +1,10 @@
 package com.syntel.Scenes;
 
-import com.syntel.DatabaseAction;
 import com.syntel.Models.Order;
 import com.syntel.SessionState;
-import com.syntel.Models.FoodItem;
-
+import model.FoodItem;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
 
 public class FoodScene extends Scene {
 
@@ -21,14 +16,12 @@ public class FoodScene extends Scene {
     
     private List<FoodItem> retrievedFoods;
     private List<FoodItem> addedItems;
-    private List<Package> todaysSpecials;
     private State state;
 
     FoodScene() {
         state = State.Options;
-        retrievedFoods = DatabaseAction.getFood(SessionState.customer);
-        // mix todaysSpecial orders with retrievedFoods?
-        todaysSpecials = new ArrayList<>();//DatabaseAction.getTodaysSpecials();
+        //TODO: need to use connector/controller
+        //retrievedFoods = DatabaseAction.getFood(SessionState.customer);
         addedItems = new ArrayList<>();
     }
 

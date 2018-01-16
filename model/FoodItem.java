@@ -1,6 +1,8 @@
+package model;
+
 
 public class FoodItem {
-    private int FoodItemId;
+    private byte[] FoodItemId;
     private String Name;
     private String Description;
     private float Price;
@@ -9,7 +11,7 @@ public class FoodItem {
     private String Image;
     private int Availability;
 
-    public FoodItem(int id, String name, String description, float price, String type, boolean veg, String image, int availability){
+    public FoodItem(byte[] id, String name, String description, float price, String type, boolean veg, String image, int availability){
         this.FoodItemId = id;
         this.Name = name;
         this.Description = description;
@@ -20,11 +22,11 @@ public class FoodItem {
         this.Availability = availability;
     }
     
-    public int getFoodItemId() {
+    public byte[] getFoodItemId() {
         return FoodItemId;
     }
 
-    public void setFoodItemId(int FoodItemId) {
+    public void setFoodItemId(byte[] FoodItemId) {
         this.FoodItemId = FoodItemId;
     }
 
@@ -84,6 +86,14 @@ public class FoodItem {
         this.Availability = Availability;
     }
     
+    public String toString()
+    {
+        StringBuilder toReturn = new StringBuilder();
+        toReturn.append( Name );
+        toReturn.append( "\t" );
+        toReturn.append( Description );
+        return toReturn.toString();
+    }
 }
 
 

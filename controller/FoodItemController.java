@@ -1,3 +1,8 @@
+package controller;
+
+import com.syntel.Scenes.FoodItemView;
+import model.FoodItem;
+
 
 public class FoodItemController {
     private FoodItem model;
@@ -8,11 +13,11 @@ public class FoodItemController {
       this.view = view;
    }
 
-   public void setFoodItemId(int Id){
+   public void setFoodItemId(byte[] Id){
       model.setFoodItemId(Id);		
    }
 
-   public int getFoodItemId(){
+   public byte[] getFoodItemId(){
       return model.getFoodItemId();		
    }
 

@@ -1,6 +1,5 @@
 package com.syntel.Scenes;
 
-import com.syntel.DatabaseAction;
 import com.syntel.SessionState;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class LoginScene extends Scene {
         if (!loggingIn)
             return new HomeScene();
 
-        SessionState.customer = DatabaseAction.getCustomer(email, password);
+        //SessionState.customer = DatabaseAction.getCustomer(email, password);
 
         if (SessionState.customer == null) {
             System.out.println("Login was unsuccessful.");

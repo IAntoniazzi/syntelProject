@@ -18,4 +18,14 @@ public class OrderController {
     {
         return new Connector().selectOrdersSortColumn( columnName );
     }
+    
+    public ArrayList<Orders> getOrdersByCustomerColumn( String columnName )
+    {
+        return new Connector().selectOrdersSortCustomerColumn( columnName );
+    }
+    
+    public ArrayList<Orders> getOrdersByAddressZip()
+    {
+        return new Connector().selectOrdersSortAddressZip();
+    }
 }

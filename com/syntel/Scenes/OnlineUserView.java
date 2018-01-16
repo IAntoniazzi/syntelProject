@@ -1,3 +1,5 @@
+package com.syntel.Scenes;
+
 
 public class OnlineUserView {
     public void printOnlineUser(String FirstName, String LastName, String Email,  int AddressId, boolean IsAdmin, boolean IsBanned){

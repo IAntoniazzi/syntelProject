@@ -5,8 +5,6 @@
  */
 package com.syntel.Scenes;
 
-import com.syntel.DatabaseAction;
-import com.syntel.Models.FoodItem;
 import com.syntel.Models.Order;
 import com.syntel.SessionState;
 import java.util.ArrayList;
@@ -30,7 +28,6 @@ public class OrderScene extends Scene {
     private String deliveryDate;
     private int deliveryTime;
     private Order order;
-    private boolean purchasing;
 
     public OrderScene() {
         deliveryTime = -1;
@@ -45,10 +42,15 @@ public class OrderScene extends Scene {
                 return new FoodScene();
 
             case "Finish":
+                //TODO: Finalize the order and put into the database
+                //TODO: get the user id from the customer in the session state
+                //TODO: if the address chosen is the default address than do not create a new address
+                //  just use the address id of the customer's address
+                //TODO: need to finalize the food items to be added to the order items table
                 order.setDeliveryAddress(address);
                 order.setDeliveryDate(deliveryDate);
                 order.setDeliveryTime(deliveryTime);
-                DatabaseAction.addOrder(SessionState.customer, order);
+                //DatabaseAction.addOrder(SessionState.customer, order);
                 return new HomeScene();
         }
 
@@ -86,19 +88,16 @@ public class OrderScene extends Scene {
                 switch (selectedChoice) {
 
                     case "Back":
-                        purchasing = false;
                         requestTransition = true;
                         break;
 
                     case "Use default address":
-                        address = SessionState.customer.getAddress();
-                        // fix this when we have more concrete classes
-                        if (address == null) {
-                            address = "";
-                        }
+                        //TODO: get the address of the user from the session state
+                        //TODO: make sure all food items are available for the address zip code area
                         break;
 
                     case "Use new address":
+                        //TODO: make sure the new address is in an area that all the food on the order are available in
                         System.out.println("Type new address: ");
                         address = scanner.nextLine();
                         if (address.length() == 0) {
@@ -142,7 +141,6 @@ public class OrderScene extends Scene {
                 switch (selectedChoice) {
 
                     case "Back":
-                        purchasing = false;
                         requestTransition = true;
                         break;
 
@@ -151,11 +149,7 @@ public class OrderScene extends Scene {
                         break;
 
                     case "Set date of delivery":
-                        // TODO: this has to be a date, parsed to a date
-                        // this also cannot be 30 days beyond the current date,
-                        // maybe just set this as "Delivery date (days from now)"
-                        // and create this Date when about to process the database action?
-                        
+                        //TODO: convert delivery date to an actual date and compare it to current date
                         System.out.println("Type delivery date: ");
                         deliveryDate = scanner.nextLine();
                         if (deliveryDate.length() == 0) {
@@ -195,7 +189,6 @@ public class OrderScene extends Scene {
                 switch (selectedChoice) {
 
                     case "Back":
-                        purchasing = false;
                         requestTransition = true;
                         break;
 
@@ -207,8 +200,7 @@ public class OrderScene extends Scene {
                         System.out.println("(Note: post the 24 hour time e.g. 22 = 10pm)");
                         System.out.println("Type delivery time: ");
                         try {
-                            deliveryTime = scanner.nextInt();
-                            scanner.nextLine(); // flush buffer
+                            deliveryTime = Integer.parseInt( scanner.nextLine() );
                             if (deliveryTime < 0 || deliveryTime > 23)
                                 deliveryTime = -1;
                         } catch (Exception e) {
@@ -227,8 +219,8 @@ public class OrderScene extends Scene {
 
                 choices = new ArrayList<>();
                 if (paymentInfo == null) {
-                    choices.add("Use default payment");
-                    choices.add("Use new payment information");
+                    choices.add("Cash");
+                    choices.add("Card");
                 } else {
                     choices.add("Unset payment");
                     choices.add("Finish");
@@ -249,25 +241,27 @@ public class OrderScene extends Scene {
                 switch (selectedChoice) {
 
                     case "Back":
-                        purchasing = false;
                         requestTransition = true;
                         break;
 
-                    case "Use default payment":
-                        paymentInfo = SessionState.customer.getPaymentInfo();
+                    case "Cash":
+                        //TODO: fix this
+                        //paymentInfo = SessionState.customer.getPaymentInfo();
                         // fix this when we have more concrete classes
-                        if (paymentInfo == null) {
-                            paymentInfo = "";
-                        }
+                        //if (paymentInfo == null) {
+                        //    paymentInfo = "";
+                        //}
                         selectedChoice = null;
                         break;
 
-                    case "Use new payment information":
+                    case "Card":
+                        //TODO: fix this,just using payment method not doing anything with credit cards
                         System.out.println("Type new payment information: ");
-                        paymentInfo = scanner.nextLine();
-                        if (paymentInfo.length() == 0) {
-                            paymentInfo = null;
-                        }
+                        //paymentInfo = scanner.nextLine();
+                        //if (paymentInfo.length() == 0) {
+                        //    paymentInfo = null;
+                        //}
+                        selectedChoice = null;
                         break;
 
                     case "Unset payment":
@@ -281,7 +275,9 @@ public class OrderScene extends Scene {
                 break;
 
             case Receipt:
+                //TODO: print out the receipt to a file and to the console
                 System.out.println("Payment finished.");
+                //on transition method will do the heavy lifting for actually creating the order
                 requestTransition = true;
         }
     }
